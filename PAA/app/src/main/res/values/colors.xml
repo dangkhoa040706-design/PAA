@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- PAA color palette. Brand: Deep Scarlet #BC0024 + Pearl White #F0EAD6 -->
+<resources>
+    <!-- Brand -->
+    <color name="paa_scarlet">#BC0024</color>
+    <color name="paa_scarlet_dark">#8A001A</color>       <!-- status bar, pressed -->
+    <color name="paa_scarlet_container">#F6D5DB</color>  <!-- soft red background -->
+    <color name="paa_pearl">#F0EAD6</color>
+
+    <!-- Surfaces (light) -->
+    <color name="paa_background">#F0EAD6</color>
+    <color name="paa_surface">#FBF8EE</color>            <!-- cards, sheets -->
+    <color name="paa_surface_variant">#E6DEC5</color>    <!-- chips, table header -->
+    <color name="paa_outline">#CFC5A6</color>            <!-- divider, border -->
+
+    <!-- Text (light) -->
+    <color name="paa_ink">#2A1A1D</color>                <!-- main text, primary button -->
+    <color name="paa_ink_secondary">#6B5A5D</color>
+    <color name="paa_on_scarlet">#F0EAD6</color>
+
+    <!-- Semantic: variants -->
+    <color name="paa_bad">#BC0024</color>                <!-- label BAD -->
+    <color name="paa_bad_container">#F6D5DB</color>
+    <color name="paa_opt">#1A7034</color>                <!-- label OPTIMIZED -->
+    <color name="paa_opt_container">#D5E8D4</color>
+    <color name="paa_warning">#9A5B00</color>
+    <color name="paa_warning_container">#F6E2B8</color>
+
+    <!-- Charts / compare table -->
+    <color name="paa_chart_bad">#BC0024</color>
+    <color name="paa_chart_opt">#1A7034</color>
+    <color name="paa_chart_neutral">#8C7F6B</color>      <!-- baseline, axis, gridline -->
+
+    <!-- Metrics overlay (always dark, readable in video) -->
+    <color name="paa_overlay_bg">#CC2A1A1D</color>       <!-- ink 80% opacity -->
+    <color name="paa_overlay_text">#F0EAD6</color>
+    <color name="paa_overlay_good">#5FD08A</color>
+    <color name="paa_overlay_warn">#FFC24D</color>
+    <color name="paa_overlay_bad">#FF6A82</color>
+
+    <!-- Dark theme: put these in res/values-night/colors.xml with the same names -->
+    <!-- paa_background #1C1416 | paa_surface #2A1F22 | paa_surface_variant #3A2C30 | paa_outline #54444A -->
+    <!-- paa_ink #F0EAD6 | paa_ink_secondary #BDB09B | paa_scarlet #FF6A82 | paa_on_scarlet #1C1416 -->
+    <!-- paa_bad #FF6A82 | paa_bad_container #4A1620 | paa_opt #5FD08A | paa_opt_container #163A24 -->
+    <!-- paa_warning #FFC24D | paa_warning_container #4A3510 -->
+</resources>

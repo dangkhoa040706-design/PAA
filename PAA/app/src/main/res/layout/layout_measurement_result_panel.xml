@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardResultPanel"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="12dp"
+    android:visibility="gone"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    app:strokeColor="@color/paa_outline"
+    app:strokeWidth="1dp"
+    app:cardBackgroundColor="@color/paa_surface">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvResultHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="KẾT QUẢ ĐO LƯỜNG"
+            android:textColor="@color/paa_scarlet"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/paa_outline"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Row: FPS & Jank% -->
+        <LinearLayout
+            android:id="@+id/rowFpsJank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="FPS trung bình:"
+                android:textColor="@color/paa_ink_secondary"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tvResFps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="--.-"
+                android:textColor="@color/paa_ink"
+                android:textStyle="bold"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rowJankPercent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="% Frame Jank:"
+                android:textColor="@color/paa_ink_secondary"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tvResJank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="--.-%"
+                android:textColor="@color/paa_ink"
+                android:textStyle="bold"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Row: P95 Frame Time -->
+        <LinearLayout
+            android:id="@+id/rowP95"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Frame Time P95:"
+                android:textColor="@color/paa_ink_secondary"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tvResP95"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-- ms"
+                android:textColor="@color/paa_ink"
+                android:textStyle="bold"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Row: Exec Time (CPU Lab) -->
+        <LinearLayout
+            android:id="@+id/rowExecTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Thời gian tính toán:"
+                android:textColor="@color/paa_ink_secondary"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tvResExecTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-- ms"
+                android:textColor="@color/paa_ink"
+                android:textStyle="bold"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Row: RAM Đỉnh -->
+        <LinearLayout
+            android:id="@+id/rowRam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="RAM PSS đỉnh:"
+                android:textColor="@color/paa_ink_secondary"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tvResRam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-- MB"
+                android:textColor="@color/paa_ink"
+                android:textStyle="bold"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Row: CPU TB -->
+        <LinearLayout
+            android:id="@+id/rowCpu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="CPU trung bình:"
+                android:textColor="@color/paa_ink_secondary"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tvResCpu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="--%"
+                android:textColor="@color/paa_ink"
+                android:textStyle="bold"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

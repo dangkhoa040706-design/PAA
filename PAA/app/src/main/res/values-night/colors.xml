@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- PAA dark color palette. -->
+<resources>
+    <!-- Brand -->
+    <color name="paa_scarlet">#FF6A82</color>
+    <color name="paa_scarlet_dark">#BC0024</color>
+    <color name="paa_scarlet_container">#4A1620</color>
+    <color name="paa_pearl">#F0EAD6</color>
+
+    <!-- Surfaces (dark) -->
+    <color name="paa_background">#1C1416</color>
+    <color name="paa_surface">#2A1F22</color>
+    <color name="paa_surface_variant">#3A2C30</color>
+    <color name="paa_outline">#54444A</color>
+
+    <!-- Text (dark) -->
+    <color name="paa_ink">#F0EAD6</color>
+    <color name="paa_ink_secondary">#BDB09B</color>
+    <color name="paa_on_scarlet">#1C1416</color>
+
+    <!-- Semantic: variants -->
+    <color name="paa_bad">#FF6A82</color>
+    <color name="paa_bad_container">#4A1620</color>
+    <color name="paa_opt">#5FD08A</color>
+    <color name="paa_opt_container">#163A24</color>
+    <color name="paa_warning">#FFC24D</color>
+    <color name="paa_warning_container">#4A3510</color>
+
+    <!-- Charts / compare table -->
+    <color name="paa_chart_bad">#FF6A82</color>
+    <color name="paa_chart_opt">#5FD08A</color>
+    <color name="paa_chart_neutral">#8C7F6B</color>
+
+    <!-- Metrics overlay -->
+    <color name="paa_overlay_bg">#CC2A1A1D</color>
+    <color name="paa_overlay_text">#F0EAD6</color>
+    <color name="paa_overlay_good">#5FD08A</color>
+    <color name="paa_overlay_warn">#FFC24D</color>
+    <color name="paa_overlay_bad">#FF6A82</color>
+</resources>

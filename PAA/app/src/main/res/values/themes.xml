@@ -1,0 +1,22 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme using Material3 DayNight NoActionBar -->
+    <style name="Theme.PAA" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Brand Colors -->
+        <item name="colorPrimary">@color/paa_scarlet</item>
+        <item name="colorOnPrimary">@color/paa_on_scarlet</item>
+        <item name="colorPrimaryContainer">@color/paa_scarlet_container</item>
+        <item name="colorOnPrimaryContainer">@color/paa_scarlet_dark</item>
+
+        <!-- Secondary & Surface -->
+        <item name="colorSecondary">@color/paa_scarlet_dark</item>
+        <item name="android:colorBackground">@color/paa_background</item>
+        <item name="colorSurface">@color/paa_surface</item>
+        <item name="colorSurfaceVariant">@color/paa_surface_variant</item>
+        <item name="colorOutline">@color/paa_outline</item>
+        <item name="colorOnSurface">@color/paa_ink</item>
+
+        <!-- Status Bar -->
+        <item name="android:statusBarColor">@color/paa_scarlet_dark</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>

@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">PAA</string>
+    <string name="app_subtitle">Performance Analysis App</string>
+
+    <!-- Navigation & Titles -->
+    <string name="title_home">PerfLab Dashboard</string>
+    <string name="title_jank_lab">Jank Lab (UI Lag)</string>
+    <string name="title_cpu_lab">CPU Lab (Computation)</string>
+    <string name="title_memory_lab">Memory Lab (Leaks)</string>
+    <string name="title_results">Kết quả &amp; So sánh</string>
+
+    <!-- Variants -->
+    <string name="variant_bad">BAD</string>
+    <string name="variant_optimized">OPTIMIZED</string>
+    <string name="switch_variant_desc">Chuyển đổi phiên bản BAD và OPTIMIZED</string>
+
+    <!-- Action Buttons -->
+    <string name="btn_run_measure">Chạy đo</string>
+    <string name="btn_cancel">Hủy</string>
+    <string name="btn_save_result">Lưu kết quả</string>
+    <string name="btn_export">Xuất file</string>
+    <string name="btn_clear_history">Xóa lịch sử</string>
+    <string name="btn_trigger_gc">Chạy GC</string>
+
+    <!-- Overlay & Status -->
+    <string name="overlay_toggle">Overlay: BẬT</string>
+    <string name="status_idle">Sẵn sàng</string>
+    <string name="status_running">Đang chạy kịch bản đo...</string>
+    <string name="status_finished">Đo hoàn tất</string>
+</resources>

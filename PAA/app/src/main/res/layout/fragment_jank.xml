@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/paa_background">
+
+    <!-- Header Controls chung: Tiêu đề, Switch BAD/OPT, nút Chạy đo/Hủy/Lưu -->
+    <include
+        android:id="@+id/headerControls"
+        layout="@layout/layout_module_header_controls" />
+
+    <!-- Result Panel: Bảng kết quả sau khi đo -->
+    <include
+        android:id="@+id/resultPanel"
+        layout="@layout/layout_measurement_result_panel" />
+
+    <!-- RecyclerView danh sách ảnh -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPhotos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingTop="4dp"
+        android:paddingBottom="8dp" />
+
+</LinearLayout>

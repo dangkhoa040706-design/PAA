@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/paa_surface"
+    android:padding="10dp"
+    android:elevation="2dp">
+
+    <!-- Header bar: Back button + Title -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_revert"
+            app:tint="@color/paa_ink"
+            android:contentDescription="Quay lại" />
+
+        <TextView
+            android:id="@+id/tvModuleTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="Module Title"
+            android:textColor="@color/paa_ink"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!-- Label BAD / OPTIMIZED badge -->
+        <TextView
+            android:id="@+id/tvVariantBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BAD"
+            android:textColor="@color/paa_pearl"
+            android:background="@color/paa_bad"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp" />
+    </LinearLayout>
+
+    <!-- Switch BAD vs OPTIMIZED -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="6dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chế độ kiểm thử:"
+            android:textColor="@color/paa_ink"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvBadLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="BAD"
+            android:textColor="@color/paa_bad"
+            android:textStyle="bold"
+            android:textSize="13sp" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/swVariant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            app:thumbTint="@color/paa_scarlet"
+            app:trackTint="@color/paa_outline" />
+
+        <TextView
+            android:id="@+id/tvOptLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OPTIMIZED"
+            android:textColor="@color/paa_opt"
+            android:textStyle="bold"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <!-- Action Buttons: Chạy đo / Hủy / Lưu -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRun"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_weight="1"
+            android:text="Chạy đo"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            app:cornerRadius="8dp"
+            android:backgroundTint="@color/paa_scarlet"
+            android:textColor="@color/paa_pearl" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="46dp"
+            android:layout_marginStart="8dp"
+            android:text="Hủy"
+            android:textSize="13sp"
+            app:cornerRadius="8dp"
+            android:enabled="false"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:textColor="@color/paa_ink" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="46dp"
+            android:layout_marginStart="8dp"
+            android:text="Lưu"
+            android:textSize="13sp"
+            app:cornerRadius="8dp"
+            android:enabled="false"
+            android:backgroundTint="@color/paa_ink"
+            android:textColor="@color/paa_pearl" />
+    </LinearLayout>
+
+    <!-- Progress indicator -->
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progressRunning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:indicatorColor="@color/paa_scarlet"
+        app:trackColor="@color/paa_scarlet_container" />
+
+</LinearLayout>

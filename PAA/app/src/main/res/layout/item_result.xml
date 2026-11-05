@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginBottom="6dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="2dp"
+    app:strokeColor="@color/paa_outline"
+    app:strokeWidth="1dp"
+    app:cardBackgroundColor="@color/paa_surface">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Module Tag -->
+            <TextView
+                android:id="@+id/tvItemModule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="JANK"
+                android:textColor="@color/paa_ink"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:background="@color/paa_surface_variant"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp" />
+
+            <!-- Variant Badge (BAD / OPT) -->
+            <TextView
+                android:id="@+id/tvItemVariant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="BAD"
+                android:textColor="@color/paa_pearl"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:background="@color/paa_bad"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp" />
+
+            <TextView
+                android:id="@+id/tvItemTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:text="10/11 14:02"
+                android:textColor="@color/paa_ink_secondary"
+                android:textSize="12sp" />
+
+            <ImageButton
+                android:id="@+id/btnDeleteItem"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_menu_delete"
+                app:tint="@color/paa_scarlet"
+                android:contentDescription="Xóa bản ghi này" />
+        </LinearLayout>
+
+        <!-- Metric Values -->
+        <TextView
+            android:id="@+id/tvItemMetrics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="FPS: 42.1 | Jank: 23.4% | P95: 38ms | RAM: 215MB"
+            android:textColor="@color/paa_ink"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvItemScenario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Kịch bản: Cuộn 500 item x 3 lượt"
+            android:textColor="@color/paa_ink_secondary"
+            android:textSize="11sp" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

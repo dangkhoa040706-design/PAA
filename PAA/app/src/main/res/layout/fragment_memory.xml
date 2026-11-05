@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/paa_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header Controls chung: Tiêu đề, Switch BAD/OPT, nút Chạy đo/Hủy/Lưu -->
+        <include
+            android:id="@+id/headerControls"
+            layout="@layout/layout_module_header_controls" />
+
+        <!-- Card điều khiển Memory Lab & Nút Chạy GC -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            app:cardCornerRadius="10dp"
+            app:strokeColor="@color/paa_outline"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/paa_surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kiểm thử Rò rỉ Bộ nhớ (Memory Leak)"
+                    android:textColor="@color/paa_ink"
+                    android:textStyle="bold"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Kịch bản: Tự động mở và đóng màn hình con 20 lần. Bản BAD giữ tham chiếu qua Singleton, Handler và Listener."
+                    android:textColor="@color/paa_ink_secondary"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="14dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnManualGc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="44dp"
+                        android:text="Kích hoạt GC thủ công"
+                        android:textSize="12sp"
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:textColor="@color/paa_ink" />
+
+                    <TextView
+                        android:id="@+id/tvCurrentRam"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="RAM: -- MB"
+                        android:textColor="@color/paa_scarlet"
+                        android:textStyle="bold"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Result Panel: Bảng kết quả sau khi đo -->
+        <include
+            android:id="@+id/resultPanel"
+            layout="@layout/layout_measurement_result_panel" />
+
+        <!-- Card chi tiết số instance leak phát hiện được -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardLeakInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="16dp"
+            android:visibility="gone"
+            app:cardCornerRadius="10dp"
+            app:cardBackgroundColor="@color/paa_surface_variant">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="THỐNG KÊ INSTANCE ACTIVITY:"
+                    android:textColor="@color/paa_ink"
+                    android:textStyle="bold"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvLeakDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="-- / --"
+                    android:textColor="@color/paa_ink"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+</ScrollView>

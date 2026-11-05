@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/overlayRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@color/paa_overlay_bg"
+    android:paddingStart="12dp"
+    android:paddingEnd="12dp"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp"
+    android:gravity="center_vertical"
+    android:elevation="10dp">
+
+    <!-- FPS -->
+    <TextView
+        android:id="@+id/tvFpsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FPS: "
+        android:textColor="@color/paa_overlay_text"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvFpsValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="--.-"
+        android:textColor="@color/paa_overlay_good"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_marginEnd="12dp" />
+
+    <!-- Jank % -->
+    <TextView
+        android:id="@+id/tvJankLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jank: "
+        android:textColor="@color/paa_overlay_text"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvJankValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="--.-%"
+        android:textColor="@color/paa_overlay_good"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_marginEnd="12dp" />
+
+    <!-- RAM -->
+    <TextView
+        android:id="@+id/tvRamLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RAM: "
+        android:textColor="@color/paa_overlay_text"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvRamValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="--MB"
+        android:textColor="@color/paa_overlay_text"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_marginEnd="12dp" />
+
+    <!-- CPU -->
+    <TextView
+        android:id="@+id/tvCpuLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CPU: "
+        android:textColor="@color/paa_overlay_text"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvCpuValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="--%"
+        android:textColor="@color/paa_overlay_text"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1" />
+
+    <!-- Nút Ẩn/Hiện nhỏ -->
+    <ImageView
+        android:id="@+id/ivToggleVisibility"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        android:contentDescription="Ẩn Overlay" />
+
+</LinearLayout>

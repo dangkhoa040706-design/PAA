@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000"><rect x="0" y="0" width="1000" height="1000" fill="#F0EAD6"/><g transform="translate(110.0,315.9006211180124) scale(0.968944099378882)"><defs>
+  <path id="ac" fill-rule="evenodd" d="M0,380 L115,0 L205,0 L320,380 L215,380 L197,300 L123,300 L105,380 Z M160,92 L138,205 L182,205 Z"/>
+  <mask id="mc" maskUnits="userSpaceOnUse" x="-100" y="-100" width="1100" height="600">
+    <rect x="-100" y="-100" width="1100" height="600" fill="#fff"/>
+    <use href="#ac" transform="translate(270,0)" fill="#000" stroke="#000" stroke-width="18" stroke-linejoin="miter"/>
+  </mask></defs>
+  <g mask="url(#mc)"><use href="#ac" transform="translate(485,0)" fill="#2A1A1D"/></g>
+  <use href="#ac" transform="translate(270,0)" fill="#8A001A"/>
+  <path fill="#BC0024" d="M125,0 H215 A115,115 0 0 1 215,230 H125 V155 H205 A40,40 0 0 0 205,75 H125 Z"/>
+  <polygon fill="#BC0024" points="0,0 100,0 100,240 0,380"/></g></svg>

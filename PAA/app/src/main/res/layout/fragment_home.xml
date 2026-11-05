@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/paa_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Logo & Header -->
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="140dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/logo_paa_transparent"
+            android:contentDescription="@string/app_name" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/app_subtitle"
+            android:textColor="@color/paa_ink"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Android Performance Profiling Lab"
+            android:textColor="@color/paa_ink_secondary"
+            android:textSize="13sp"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Module 1: Jank Lab -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardJank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            app:strokeColor="@color/paa_outline"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/paa_surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1. Jank Lab"
+                    android:textColor="@color/paa_scarlet"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Phân tích và tối ưu giật lag giao diện (Frame drop, Bitmap decode trên Main Thread, Layout lồng sâu)"
+                    android:textColor="@color/paa_ink_secondary"
+                    android:textSize="13sp"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Module 2: CPU Lab -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardCpu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            app:strokeColor="@color/paa_outline"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/paa_surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2. CPU Lab"
+                    android:textColor="@color/paa_scarlet"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Phân tích tải CPU và chặn Main Thread (Thuật toán O(n²) vs O(n) Coroutines trên 50.000 số nguyên)"
+                    android:textColor="@color/paa_ink_secondary"
+                    android:textSize="13sp"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Module 3: Memory Lab -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardMemory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            app:strokeColor="@color/paa_outline"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/paa_surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3. Memory Lab"
+                    android:textColor="@color/paa_scarlet"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Phát hiện và khắc phục rò rỉ bộ nhớ (Static Activity, Handler leak, Fragment binding với LeakCanary)"
+                    android:textColor="@color/paa_ink_secondary"
+                    android:textSize="13sp"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Nút Kết quả & So sánh -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnResults"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:text="Xem Bảng Kết Quả &amp; So Sánh Trước/Sau"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:cornerRadius="10dp"
+            android:backgroundTint="@color/paa_ink"
+            android:textColor="@color/paa_pearl"
+            android:layout_marginTop="8dp" />
+
+        <!-- Footer: Thông tin thiết bị -->
+        <TextView
+            android:id="@+id/tvDeviceInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Thiết bị: Đang tải..."
+            android:textColor="@color/paa_ink_secondary"
+            android:textSize="12sp"
+            android:layout_marginTop="28dp" />
+
+    </LinearLayout>
+</ScrollView>
