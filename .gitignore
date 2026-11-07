@@ -7,3 +7,5 @@ captures/
 *.hprof
 *.apk
 ~$*.xlsx
+__pycache__/
+*.pyc
