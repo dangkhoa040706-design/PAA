@@ -174,7 +174,7 @@ class JankFragment : Fragment() {
     // --- [TIẾN HÀNH ĐO ĐẠC]: Khởi chạy kịch bản cuộn danh sách tự động ---
     private fun runMeasurement() {
         val window = requireActivity().window
-        val currentScenario = JankScenario(requireContext(), window, binding.rvPhotos, collector)
+        val currentScenario = JankScenario(requireContext(), window, binding.rvPhotos, collector, viewModel.variant.value)
         scenario = currentScenario
 
         binding.headerControls.btnRun.isEnabled = false
@@ -206,6 +206,7 @@ class JankFragment : Fragment() {
 
         binding.headerControls.btnRun.isEnabled = true
         binding.headerControls.btnCancel.isEnabled = false
+        binding.headerControls.btnSave.isEnabled = false
         binding.headerControls.progressRunning.visibility = View.GONE
     }
 

@@ -66,6 +66,7 @@ class ResultsFragment : Fragment() {
         binding.rvHistory.adapter = adapter
 
         // 2. ChipGroup chọn module
+        syncChipSelection(viewModel.selectedModule.value)
         binding.chipGroupModules.setOnCheckedStateChangeListener { _, checkedIds ->
             if (checkedIds.isEmpty()) return@setOnCheckedStateChangeListener
             val selectedModule = when (checkedIds.first()) {
@@ -106,11 +107,35 @@ class ResultsFragment : Fragment() {
         }
     }
 
+    private fun syncChipSelection(module: String) {
+        when (module.uppercase()) {
+            "CPU" -> binding.chipCpu.isChecked = true
+            "MEMORY" -> binding.chipMemory.isChecked = true
+            else -> binding.chipJank.isChecked = true
+        }
+    }
+
     private fun observeData() {
-        // Lịch sử toàn bộ
+        // Lịch sử theo module đã chọn (chỉ hiển thị các lần đo của module tương ứng)
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.allResults.collectLatest { list ->
+            viewModel.filteredResults.collectLatest { list ->
                 adapter?.updateList(list)
+                val isEmpty = list.isEmpty()
+                binding.tvEmptyHistory.visibility = if (isEmpty) View.VISIBLE else View.GONE
+                binding.rvHistory.visibility = if (isEmpty) View.GONE else View.VISIBLE
+            }
+        }
+
+        // Cập nhật tiêu đề lịch sử theo module
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.selectedModule.collectLatest { module ->
+                val moduleTitle = when (module.uppercase()) {
+                    "JANK" -> "JANK LAB"
+                    "CPU" -> "CPU LAB"
+                    "MEMORY" -> "MEMORY LAB"
+                    else -> module.uppercase()
+                }
+                binding.tvHistoryHeader.text = "LỊCH SỬ CÁC LẦN ĐO - $moduleTitle"
             }
         }
 

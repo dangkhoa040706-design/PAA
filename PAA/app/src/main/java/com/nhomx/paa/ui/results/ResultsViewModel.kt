@@ -31,6 +31,9 @@ class ResultsViewModel(application: Application) : AndroidViewModel(application)
     private val _selectedModule = MutableStateFlow(Module.JANK.name)
     val selectedModule: StateFlow<String> = _selectedModule.asStateFlow()
 
+    private val _filteredResults = MutableStateFlow<List<MeasurementResult>>(emptyList())
+    val filteredResults: StateFlow<List<MeasurementResult>> = _filteredResults.asStateFlow()
+
     private val _comparisonRows = MutableStateFlow<List<ComparisonRow>>(emptyList())
     val comparisonRows: StateFlow<List<ComparisonRow>> = _comparisonRows.asStateFlow()
 
@@ -43,14 +46,14 @@ class ResultsViewModel(application: Application) : AndroidViewModel(application)
 
     fun selectModule(moduleName: String) {
         _selectedModule.value = moduleName
-        computeComparison(_allResults.value, moduleName)
+        updateFilteredAndComparison(_allResults.value, moduleName)
     }
 
     fun loadResults() {
         viewModelScope.launch {
             val list = resultStore.getAll()
             _allResults.value = list
-            computeComparison(list, _selectedModule.value)
+            updateFilteredAndComparison(list, _selectedModule.value)
         }
     }
 
@@ -66,6 +69,11 @@ class ResultsViewModel(application: Application) : AndroidViewModel(application)
             resultStore.clear()
             loadResults()
         }
+    }
+
+    private fun updateFilteredAndComparison(list: List<MeasurementResult>, module: String) {
+        _filteredResults.value = list.filter { it.module.equals(module, ignoreCase = true) }
+        computeComparison(list, module)
     }
 
     private fun computeComparison(list: List<MeasurementResult>, module: String) {

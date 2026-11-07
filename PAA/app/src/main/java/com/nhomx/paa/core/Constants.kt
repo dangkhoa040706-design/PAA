@@ -2,7 +2,7 @@ package com.nhomx.paa.core
 
 object Constants {
     // Jank Lab
-    const val JANK_ITEM_COUNT = 500
+    const val JANK_ITEM_COUNT = 200
     const val JANK_SCROLL_STEP_PX = 25
     const val BAD_DECODE_SAMPLE_SIZE = 1 // Chỉnh nếu máy yếu để cân bằng: giật rõ nhưng không OOM
 

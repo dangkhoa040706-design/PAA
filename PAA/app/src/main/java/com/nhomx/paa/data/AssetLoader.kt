@@ -10,11 +10,12 @@ import java.io.InputStreamReader
 
 object AssetLoader {
 
-    suspend fun loadPhotoItems(context: Context): List<PhotoItem> = withContext(Dispatchers.IO) {
+    suspend fun loadPhotoItems(context: Context, limit: Int = Constants.JANK_ITEM_COUNT): List<PhotoItem> = withContext(Dispatchers.IO) {
         val jsonString = context.assets.open(Constants.ITEMS_JSON_FILE).bufferedReader().use { it.readText() }
         val jsonArray = JSONArray(jsonString)
         val list = mutableListOf<PhotoItem>()
-        for (i in 0 until jsonArray.length()) {
+        val count = if (limit > 0) minOf(jsonArray.length(), limit) else jsonArray.length()
+        for (i in 0 until count) {
             val obj = jsonArray.getJSONObject(i)
             list.add(
                 PhotoItem(

@@ -65,7 +65,8 @@
         android:paddingEnd="12dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
-        app:singleSelection="true">
+        app:singleSelection="true"
+        app:selectionRequired="true">
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipJank"
@@ -192,6 +193,7 @@
 
     <!-- History List Header -->
     <TextView
+        android:id="@+id/tvHistoryHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
@@ -202,6 +204,19 @@
         android:textColor="@color/paa_ink"
         android:textStyle="bold"
         android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/tvEmptyHistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="Chưa có lần đo nào cho module này."
+        android:textColor="@color/paa_ink_secondary"
+        android:textSize="13sp"
+        android:visibility="gone" />
 
     <!-- RecyclerView lịch sử -->
     <androidx.recyclerview.widget.RecyclerView

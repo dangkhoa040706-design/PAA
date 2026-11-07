@@ -19,7 +19,7 @@ import kotlinx.coroutines.withContext
 // =========================================================================
 // --- [KỊCH BẢN ĐO ĐẠC TỰ ĐỘNG: JANK SCENARIO] ---
 // Quy trình đo lường chuẩn:
-// 1. Tự động cuộn danh sách 500 phần tử qua lại 3 lượt liên tục.
+// 1. Tự động cuộn danh sách 200 phần tử qua lại 1 lượt.
 // 2. Thu thập thời gian vẽ từng khung hình (Frame Duration) qua FrameMetrics API.
 // 3. Tính toán các chỉ số thống kê: FPS trung bình, Tỷ lệ Jank (%), Percentile P50, P90, P95, P99.
 // =========================================================================
@@ -27,7 +27,8 @@ class JankScenario(
     private val context: Context,
     private val window: Window,
     private val recyclerView: RecyclerView,
-    private val collector: MetricsCollector
+    private val collector: MetricsCollector,
+    private val variant: Variant = Variant.BAD
 ) : ScenarioRunner() {
 
     private var isCancelled = false
@@ -46,11 +47,11 @@ class JankScenario(
         val refreshRate = DeviceInfo.getRefreshRate(context)
         collector.start(window, refreshRate)
 
-        val totalLoops = 3
+        val totalLoops = 1
         val startTime = System.currentTimeMillis()
 
         try {
-            // --- BƯỚC 3: Thực hiện 3 chu kỳ cuộn trang tự động để đo độ mượt ---
+            // --- BƯỚC 3: Thực hiện 1 chu kỳ cuộn trang tự động để đo độ mượt ---
             for (loop in 1..totalLoops) {
                 if (isCancelled) break
                 _state.value = ScenarioState.Running(
@@ -59,28 +60,30 @@ class JankScenario(
                 )
 
                 // Cuộn xuống từ từ (16ms tương ứng với nhịp 60 FPS)
-                var canScroll = true
-                while (canScroll && !isCancelled) {
-                    withContext(Dispatchers.Main) {
-                        canScroll = recyclerView.canScrollVertically(1)
-                        if (canScroll) {
+                while (!isCancelled) {
+                    val canScroll = withContext(Dispatchers.Main) {
+                        val can = recyclerView.canScrollVertically(1)
+                        if (can) {
                             recyclerView.scrollBy(0, Constants.JANK_SCROLL_STEP_PX)
                         }
+                        can
                     }
+                    if (!canScroll) break
                     delay(16L)
                 }
 
                 delay(500L)
 
                 // Cuộn ngược nhanh về lại đỉnh danh sách
-                var canScrollUp = true
-                while (canScrollUp && !isCancelled) {
-                    withContext(Dispatchers.Main) {
-                        canScrollUp = recyclerView.canScrollVertically(-1)
-                        if (canScrollUp) {
+                while (!isCancelled) {
+                    val canScrollUp = withContext(Dispatchers.Main) {
+                        val can = recyclerView.canScrollVertically(-1)
+                        if (can) {
                             recyclerView.scrollBy(0, -Constants.JANK_SCROLL_STEP_PX * 2)
                         }
+                        can
                     }
+                    if (!canScrollUp) break
                     delay(16L)
                 }
 
@@ -109,13 +112,13 @@ class JankScenario(
 
         val result = MeasurementResult(
             module = Module.JANK.name,
-            variant = Variant.BAD.name,
+            variant = variant.name,
             runIndex = 1,
             deviceModel = "${android.os.Build.MANUFACTURER} ${android.os.Build.MODEL}",
             androidVersion = "Android ${android.os.Build.VERSION.RELEASE} (API ${android.os.Build.VERSION.SDK_INT})",
             totalRamMb = DeviceInfo.getTotalRamGb(context) * 1024,
             buildType = if (BuildConfig.DEBUG) "debug" else "release",
-            scenarioName = "Tự động cuộn 500 item x $totalLoops lượt",
+            scenarioName = "Tự động cuộn ${Constants.JANK_ITEM_COUNT} item x $totalLoops lượt",
             durationMs = durationMs,
             avgFps = avgFps,
             jankPercent = jankPercent,
