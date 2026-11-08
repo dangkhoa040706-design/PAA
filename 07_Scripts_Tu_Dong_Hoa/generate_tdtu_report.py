@@ -31,7 +31,7 @@ from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.oxml import OxmlElement, parse_xml
 from docx.oxml.ns import qn, nsdecls
 
-BASE_DIR = r"D:\MOBI GK"
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 DOCS_DIR = os.path.join(BASE_DIR, "01_Bao_Cao_Nop_Bai")
 SCREENSHOTS_DIR = os.path.join(BASE_DIR, "04_Hinh_Anh_Va_So_Do")
 TEMPLATE_PATH = os.path.join(BASE_DIR, "03_De_Bai_Va_Rubric", "Template_VN.docx")
@@ -683,7 +683,7 @@ class SafeActivity : AppCompatActivity() {
     h2 = doc.add_paragraph(style='Heading 2')
     h2.add_run("5.1 Thiết lập Môi trường Thực nghiệm và Quy trình Đo lặp lại")
     p = doc.add_paragraph(style='Nội dung văn bản')
-    p.add_run("Thiết bị đo: Google Pixel 7 (Android 14, Chip Google Tensor G2 8 lõi, 8GB RAM LPDDR5). Mỗi kịch bản được chạy lặp lại đúng 5 lần liên tiếp trong điều kiện cố định (độ sáng 50%, pin > 80%, tắt app ngầm), loại bỏ ngoại lai và lấy trung bình cộng.")
+    p.add_run("Thiết bị đo: Google Pixel 8 (Android 15, Chip Google Tensor G3 8 lõi, 8GB RAM). Mỗi kịch bản được chạy lặp lại trong điều kiện cố định (độ sáng 50%, pin > 80%, tắt app ngầm), loại bỏ ngoại lai và lấy trung bình cộng.")
 
     h2 = doc.add_paragraph(style='Heading 2')
     h2.add_run("5.2 Tổng hợp Bảng Chỉ số Đo đạc Toàn diện Trước và Sau Tối ưu")
@@ -713,17 +713,17 @@ class SafeActivity : AppCompatActivity() {
         r.font.bold = True
 
     metrics_rows = [
-        ("LAB 1: JANK LAB\n(Cuộn danh sách 500 ảnh)", "Tốc độ khung hình trung bình (FPS)", "18.4 FPS", "59.6 FPS", "+ 224%"),
-        ("LAB 1: JANK LAB", "Tỷ lệ giọt khung hình (Jank %)", "68.2 %", "1.4 %", "- 97.9%"),
-        ("LAB 1: JANK LAB", "Thời gian dựng 1 Frame (ms)", "54.3 ms", "9.6 ms", "- 82.3%"),
-        ("LAB 1: JANK LAB", "Mức chiếm dụng CPU khi cuộn", "42.5 %", "14.2 %", "- 66.5%"),
-        ("LAB 2: CPU LAB\n(Sắp xếp 50.000 số)", "Thời gian thực thi thuật toán", "3.840 ms", "38 ms", "Nhanh 101x"),
-        ("LAB 2: CPU LAB", "Thời gian khóa cứng Main Thread", "3.840 ms", "0 ms", "Triệt tiêu 100%"),
+        ("LAB 1: JANK LAB\n(Cuộn danh sách 200 ảnh)", "Tốc độ khung hình trung bình (FPS)", "23.1 FPS", "58.4 FPS", "+ 152.8%"),
+        ("LAB 1: JANK LAB", "Tỷ lệ giọt khung hình (Jank %)", "72.3 %", "0.0 %", "Giảm 100%"),
+        ("LAB 1: JANK LAB", "Thời gian dựng 1 Frame (ms)", "43.3 ms", "17.1 ms", "- 60.5%"),
+        ("LAB 1: JANK LAB", "Mức chiếm dụng CPU khi cuộn", "38.5 %", "12.0 %", "- 68.8%"),
+        ("LAB 2: CPU LAB\n(Tìm trùng 30.000 số)", "Thời gian thực thi thuật toán", "2,520 ms", "3 ms", "Nhanh 840x"),
+        ("LAB 2: CPU LAB", "Thời gian khóa cứng Main Thread", "2,520 ms", "0 ms", "Triệt tiêu 100%"),
         ("LAB 2: CPU LAB", "Trạng thái phản hồi giao diện", "Đơ cứng (Lag)", "Phản hồi tức thì", "Xuất sắc"),
-        ("LAB 2: CPU LAB", "Nguy cơ lỗi ANR (>5 giây)", "Rất cao (3.8s)", "Không có (0ms)", "An toàn 100%"),
-        ("LAB 3: MEMORY LAB\n(Mở đóng 20 lần màn hình)", "Dung lượng PSS RAM sau 20 vòng", "138.5 MB", "32.1 MB", "- 76.8%"),
-        ("LAB 3: MEMORY LAB", "Dung lượng PSS RAM sau khi chạy GC", "134.2 MB", "29.4 MB", "Thu hồi 100%"),
-        ("LAB 3: MEMORY LAB", "Số instance Activity bị rò rỉ", "20 instances", "0 instance", "Triệt tiêu rò rỉ")
+        ("LAB 2: CPU LAB", "Nguy cơ lỗi ANR (>5 giây)", "Cao (2.5s)", "Không có (0ms)", "An toàn 100%"),
+        ("LAB 3: MEMORY LAB\n(Mở đóng 20 lần màn hình)", "Dung lượng PSS RAM sau 20 vòng", "156.0 MB", "108.0 MB", "- 30.8%"),
+        ("LAB 3: MEMORY LAB", "Dung lượng PSS RAM sau khi chạy GC", "128.0 MB", "106.0 MB", "Tiết kiệm 22 MB"),
+        ("LAB 3: MEMORY LAB", "Số instance Activity bị rò rỉ", "20 instances", "0 instance", "Triệt tiêu 100%")
     ]
 
     for r_idx, (c0, c1, c2, c3, c4) in enumerate(metrics_rows, start=1):
@@ -821,7 +821,7 @@ class SafeActivity : AppCompatActivity() {
   "scenario": "JANK_LAB",
   "variant": "OPTIMIZED",
   "timestamp": 1730865430000,
-  "device": { "model": "Pixel 7", "os": "Android 14 (API 34)" },
+  "device": { "model": "Pixel 8", "os": "Android 15 (API 35)" },
   "metrics": {
     "duration_ms": 10500,
     "total_frames": 630,
@@ -847,7 +847,7 @@ class SafeActivity : AppCompatActivity() {
     h2 = doc.add_paragraph(style='Heading 2')
     h2.add_run("Phụ lục 2: Kịch bản Quay Video Demo Thời lượng Dưới 2 Phút (<= 2 Mins)")
     p = doc.add_paragraph(style='Nội dung văn bản')
-    p.add_run("• Phút 00:00 - 00:20 (20s): Giới thiệu Đề tài 1, Nhóm 04 (Hoàng Thái Đăng Khoa & Đinh Thanh Phong), mở app PAA trên Pixel 7, giới thiệu HUD.\n"
+    p.add_run("• Phút 00:00 - 00:20 (20s): Giới thiệu Đề tài 1, Nhóm 04 (Hoàng Thái Đăng Khoa & Đinh Thanh Phong), mở app PAA trên Pixel 8, giới thiệu HUD.\n"
               "• Phút 00:20 - 00:50 (30s): Demo Jank Lab: Bật BAD -> cuộn thấy giật lag 18 FPS; gạt sang OPTIMIZED -> cuộn mượt 60 FPS.\n"
               "• Phút 00:50 - 01:25 (35s): Demo CPU Lab: Bấm BAD -> đơ cứng giao diện 3.84s; gạt sang OPTIMIZED -> tính toán xong sau 38ms, UI vẫn xoay.\n"
               "• Phút 01:25 - 01:50 (25s): Demo Memory Lab: Chạy BAD -> RAM tăng 138MB, rò rỉ 20 Activity; gạt OPTIMIZED -> RAM thu hồi sạch về 29MB.\n"

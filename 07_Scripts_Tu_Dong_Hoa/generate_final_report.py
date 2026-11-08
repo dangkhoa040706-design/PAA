@@ -48,7 +48,7 @@ HEX_BAD_BG = "FDF0F2"
 HEX_BAD_BORDER = "BC0024"
 HEX_HEADER_GRAY = "EFEFEF"
 
-BASE_DIR = r"D:\MOBI GK"
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 DOCS_DIR = os.path.join(BASE_DIR, "docs")
 SCREENSHOTS_DIR = os.path.join(DOCS_DIR, "screenshots")
 OUTPUT_DOCX = os.path.join(DOCS_DIR, "Bao_Cao_Tieu_Luan_Giua_Ky_PAA_Final.docx")

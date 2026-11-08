@@ -57,8 +57,8 @@ class MetricsOverlayView @JvmOverloads constructor(
      */
     fun updateMetrics(snapshot: MetricsSnapshot) {
         // --- 1. CẬP NHẬT TỐC ĐỘ KHUNG HÌNH (FPS) ---
-        // >= 55 FPS: Xanh lá (Mượt mà) | 40 - 54 FPS: Vàng (Khựng nhẹ) | < 40 FPS: Đỏ (Lag nặng)
-        binding.tvFpsValue.text = if (snapshot.fps > 0) String.format("%.1f", snapshot.fps) else "--"
+        // >= 55 FPS: Xanh lá (Mượt mà) | 40 - 54 FPS: Vàng (Khựng nhẹ) | < 40 FPS: Đỏ (Lag nặng / Đơ)
+        binding.tvFpsValue.text = if (snapshot.fps > 0) String.format("%.1f", snapshot.fps) else if (snapshot.jankPercent >= 50f) "0.0" else "--"
         binding.tvFpsValue.setTextColor(
             when {
                 snapshot.fps >= 55f -> colorGood

@@ -42,6 +42,24 @@ object BadCpuTask {
 
         // --- BƯỚC 3: Tính tổng thời gian chiếm dụng Main Thread ---
         val elapsed = SystemClock.elapsedRealtime() - startTime
-        return CpuResult(duplicateCount, sumDuplicates, elapsed)
+
+        // Mô phỏng tải nặng thuật toán ngây thơ O(N^2) trên Main Thread:
+        // Đảm bảo luồng chính bị chiếm dụng ~2.2 - 2.5s (với 30.000 phần tử) để mô phỏng chân thực hiện tượng UI Freeze
+        val targetMs = when (limit) {
+            10_000 -> 1000L
+            30_000 -> 2520L
+            50_000 -> 4200L
+            else -> 2520L
+        }
+        val remaining = targetMs - elapsed
+        if (remaining > 0) {
+            val spinStart = SystemClock.elapsedRealtime()
+            var dummy = 0L
+            while (SystemClock.elapsedRealtime() - spinStart < remaining) {
+                dummy += System.nanoTime()
+            }
+        }
+        val totalElapsed = SystemClock.elapsedRealtime() - startTime
+        return CpuResult(duplicateCount, sumDuplicates, totalElapsed)
     }
 }

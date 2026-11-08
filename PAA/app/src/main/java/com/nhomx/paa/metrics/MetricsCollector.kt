@@ -16,7 +16,11 @@ class MetricsCollector {
     val frameTracker = FrameMetricsTracker()
     private val cpuSampler = CpuSampler()
 
-    private val _snapshot = MutableStateFlow(MetricsSnapshot())
+    private val _snapshot = MutableStateFlow(
+        MetricsSnapshot(
+            ramMb = MemorySampler.samplePssMb()
+        )
+    )
     val snapshot: StateFlow<MetricsSnapshot> = _snapshot.asStateFlow()
 
     private var samplingJob: Job? = null
@@ -38,7 +42,6 @@ class MetricsCollector {
 
         samplingJob = scope.launch {
             while (isActive && isRunning) {
-                delay(500L)
                 val currentRam = MemorySampler.samplePssMb()
                 val currentCpu = cpuSampler.sampleCpuPercent()
                 val currentFps = frameTracker.getSnapshotFps()
@@ -55,6 +58,7 @@ class MetricsCollector {
                     ramMb = currentRam,
                     cpuPercent = currentCpu
                 )
+                delay(300L)
             }
         }
     }

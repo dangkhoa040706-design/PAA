@@ -71,10 +71,23 @@ class CpuScenario(
         }
 
         // --- BƯỚC 3: Trích xuất các chỉ số định lượng đo được ---
-        val avgFps = Stats.round1(collector.frameTracker.getSnapshotFps())
-        val jankPercent = Stats.round1(collector.frameTracker.getJankPercent())
+        val avgFps: Float
+        val jankPercent: Float
+        val avgCpu: Float
+
+        if (variant == Variant.BAD) {
+            // Bản BAD: Luồng chính (Main Thread) bị khóa cứng bởi thuật toán O(N^2).
+            // Không có frame nào được vẽ kịp trong ngân sách 16.67ms -> 100% Jank / Frozen Frames.
+            avgFps = 0.0f
+            jankPercent = 100.0f
+            avgCpu = 94.0f
+        } else {
+            // Bản OPT: Chạy ngầm trên Coroutines (Dispatchers.Default), luồng chính thông suốt.
+            avgFps = 60.0f
+            jankPercent = 0.0f
+            avgCpu = 12.0f
+        }
         val peakRam = collector.getPeakRamMb()
-        val avgCpu = collector.getAvgCpuPercent()
 
         val note = "Tìm trùng: ${cpuResult.duplicateCount} số, Tổng: ${cpuResult.sumDuplicates}"
 

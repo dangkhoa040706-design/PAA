@@ -111,8 +111,12 @@ class FrameMetricsTracker {
     // --- TÍNH TOÁN TỶ LỆ JANK (% KHUNG HÌNH RỚT) ---
     @Synchronized
     fun getSnapshotJankPercent(): Float {
+        val elapsedSec = (System.currentTimeMillis() - startTimeMs) / 1000f
         return if (totalFrames > 0) {
             Stats.round1((jankCount.toFloat() / totalFrames) * 100f)
+        } else if (elapsedSec >= 0.5f) {
+            // Luồng chính bị khóa cứng (Frozen Frame / UI Block) -> 100% Jank
+            100f
         } else {
             0f
         }

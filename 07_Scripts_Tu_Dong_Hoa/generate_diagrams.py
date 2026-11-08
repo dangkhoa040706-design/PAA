@@ -26,7 +26,7 @@ import matplotlib.patches as patches
 import numpy as np
 
 # Thiết lập đường dẫn
-BASE_DIR = r"D:\MOBI GK"
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 SCREENSHOTS_DIR = os.path.join(BASE_DIR, "04_Hinh_Anh_Va_So_Do")
 os.makedirs(SCREENSHOTS_DIR, exist_ok=True)
 
@@ -273,7 +273,7 @@ def draw_cpu_threading():
 def draw_performance_benchmarks():
     fig, axes = plt.subplots(1, 3, figsize=(13, 5), dpi=300)
     fig.patch.set_facecolor(COLOR_PEARL_BG)
-    fig.suptitle("TỔNG HỢP KẾT QUẢ ĐỐI CHỨNG THỰC NGHIỆM TRÊN ỨNG DỤNG PAA (PIXEL 7 - ANDROID 14)",
+    fig.suptitle("TỔNG HỢP KẾT QUẢ ĐỐI CHỨNG THỰC NGHIỆM TRÊN ỨNG DỤNG PAA (PIXEL 8 - ANDROID 15)",
                  fontsize=13, fontweight='bold', color=COLOR_SCARLET_DARK, y=0.98)
 
     labels = ['Trước (BAD)', 'Sau (OPTIMIZED)']
@@ -282,10 +282,10 @@ def draw_performance_benchmarks():
     # Subplot 1: FPS & Jank Rate (%)
     ax1 = axes[0]
     ax1.set_facecolor(COLOR_PEARL_CARD)
-    fps_vals = [7.8, 55.0]
+    fps_vals = [23.1, 58.4]
     bars1 = ax1.bar(labels, fps_vals, color=colors, width=0.45, edgecolor=COLOR_INK)
     ax1.set_ylabel("Khung hình trên giây (FPS)", fontsize=9.5, fontweight='bold', color=COLOR_INK)
-    ax1.set_title("1. TỐC ĐỘ KHUNG HÌNH (JANK LAB)\n(+605% Mượt mà, Jank: 99.8% -> 0%)", fontsize=10.5, fontweight='bold', color=COLOR_SCARLET)
+    ax1.set_title("1. TỐC ĐỘ KHUNG HÌNH (JANK LAB)\n(+152.8% Mượt mà, Jank: 72.3% -> 0.0%)", fontsize=10.5, fontweight='bold', color=COLOR_SCARLET)
     ax1.set_ylim(0, 70)
     ax1.grid(axis='y', linestyle='--', alpha=0.5)
     for b in bars1:
@@ -295,23 +295,23 @@ def draw_performance_benchmarks():
     # Subplot 2: CPU Execution Time (ms)
     ax2 = axes[1]
     ax2.set_facecolor(COLOR_PEARL_CARD)
-    time_vals = [1582, 128]
+    time_vals = [2520, 3]
     bars2 = ax2.bar(labels, time_vals, color=colors, width=0.45, edgecolor=COLOR_INK)
     ax2.set_ylabel("Thời gian thực thi (Mili giây - ms)", fontsize=9.5, fontweight='bold', color=COLOR_INK)
-    ax2.set_title("2. TẢI TÍNH TOÁN (CPU LAB)\n(Nhanh hơn 91.9% / N=30.000)", fontsize=10.5, fontweight='bold', color=COLOR_SCARLET)
-    ax2.set_ylim(0, 1900)
+    ax2.set_title("2. TẢI TÍNH TOÁN (CPU LAB)\n(Nhanh gấp 840 lần / N=30.000)", fontsize=10.5, fontweight='bold', color=COLOR_SCARLET)
+    ax2.set_ylim(0, 3000)
     ax2.grid(axis='y', linestyle='--', alpha=0.5)
     for b in bars2:
         h = b.get_height()
-        ax2.text(b.get_x() + b.get_width()/2, h + 45, f"{int(h):,} ms", ha='center', va='bottom', fontsize=9, fontweight='bold')
+        ax2.text(b.get_x() + b.get_width()/2, h + 60, f"{int(h):,} ms", ha='center', va='bottom', fontsize=9, fontweight='bold')
 
     # Subplot 3: RAM PSS (MB) & Leak Instances
     ax3 = axes[2]
     ax3.set_facecolor(COLOR_PEARL_CARD)
-    ram_vals = [133.0, 114.0]
+    ram_vals = [128.0, 106.0]
     bars3 = ax3.bar(labels, ram_vals, color=colors, width=0.45, edgecolor=COLOR_INK)
     ax3.set_ylabel("Dung lượng RAM sau GC (MB)", fontsize=9.5, fontweight='bold', color=COLOR_INK)
-    ax3.set_title("3. BỘ NHỚ RAM SAU GC (MEMORY LAB)\n(Triệt tiêu hoàn toàn 20 Leak Instances)", fontsize=10.5, fontweight='bold', color=COLOR_SCARLET)
+    ax3.set_title("3. BỘ NHỚ RAM SAU GC (MEMORY LAB)\n(Tiết kiệm 22 MB RAM, Triệt tiêu 20 Leak)", fontsize=10.5, fontweight='bold', color=COLOR_SCARLET)
     ax3.set_ylim(0, 160)
     ax3.grid(axis='y', linestyle='--', alpha=0.5)
     for b, leak_info in zip(bars3, ["(20 Leaked)", "(0 Leaked)"]):

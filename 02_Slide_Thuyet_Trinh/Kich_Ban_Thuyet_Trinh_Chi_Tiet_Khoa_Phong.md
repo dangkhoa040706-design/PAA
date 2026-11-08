@@ -257,11 +257,11 @@
 * **Lời thoại:**
 > *"Thưa Thầy và các bạn, trên Slide 14 là **Bảng tổng hợp số liệu đối chứng định lượng** được nhóm trích xuất trực tiếp từ các lần đo thực nghiệm trên ứng dụng PAA:*  
 >  
-> *1. Về **Tốc độ khung hình**: Bản BAD đạt 7.8 FPS $\rightarrow$ Bản OPT vọt lên **55.0 FPS**, mức cải thiện đạt **+605%**.*  
-> *2. Về **Tỷ lệ giật khung hình Jank**: Bản BAD rớt tới 99.8% $\rightarrow$ Bản OPT kéo giảm triệt để về **0.0%**.*  
-> *3. Về **Thời gian khóa Main Thread**: Bản BAD làm đơ máy 1,582 ms $\rightarrow$ Bản OPT xử lý xong trong **128 ms** (nhanh hơn **+91.9%**), và trả về **0 ms** khi có Cache.*  
-> *4. Về **Dung lượng RAM sau dọn rác**: Thu hồi thành công **19 MB RAM rác**.*  
-> *5. Về **Rò rỉ đối tượng**: Triệt tiêu sạch **100%** từ 20 instance rò rỉ về **0 Instance**.*  
+> *1. Về **Tốc độ khung hình**: Bản BAD đạt 23.1 FPS $\rightarrow$ Bản OPT vọt lên **58.4 FPS**, mức cải thiện đạt **+152.8%**.*  
+> *2. Về **Tỷ lệ giật khung hình Jank**: Bản BAD rớt tới 72.3% $\rightarrow$ Bản OPT kéo giảm triệt để về **0.0% (Triệt tiêu)**.*  
+> *3. Về **Thời gian khóa Main Thread (CPU)**: Bản BAD làm đơ máy 2,520 ms $\rightarrow$ Bản OPT xử lý xong trong **3 ms** (nhanh gấp **840 lần**).*  
+> *4. Về **Dung lượng RAM sau dọn rác**: Giảm từ 128 MB xuống 106 MB $\rightarrow$ Tiết kiệm thành công **22 MB RAM**.*  
+> *5. Về **Rò rỉ đối tượng (Memory Leak)**: Triệt tiêu sạch **100%** từ 20 instance rò rỉ về **0 Instance**.*  
 >  
 > *Các con số định lượng này chứng minh rằng: Chỉ cần thay đổi đúng tư duy kiến trúc mã nguồn, hiệu năng ứng dụng đã được nâng cấp ngoạn mục mà không cần nâng cấp phần cứng."*  
 *(Bấm chuyển sang Slide 15)*

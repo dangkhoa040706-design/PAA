@@ -74,7 +74,9 @@ def main():
     prs.slide_height = Inches(7.5)
     blank_layout = prs.slide_layouts[6]
     
-    img_dir = r"D:\MOBI GK\04_Hinh_Anh_Va_So_Do"
+    base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    img_dir = os.path.join(base_dir, "04_Hinh_Anh_Va_So_Do")
+    out_pptx = os.path.join(base_dir, "02_Slide_Thuyet_Trinh", "Thuyet_Trinh_PAA_TDTU_12_Slides.pptx")
     
     # ==========================================
     # SLIDE 1: TRANG BÌA (COVER SLIDE)
@@ -636,9 +638,8 @@ def main():
     p_th2.font.color.rgb = C_WHITE
     p_th2.alignment = PP_ALIGN.CENTER
 
-    out_file = r"D:\MOBI GK\02_Slide_Thuyet_Trinh\Thuyet_Trinh_PAA_TDTU_12_Slides.pptx"
-    prs.save(out_file)
-    print(f"File PowerPoint 13 slide đã được tạo thành công tại: {out_file}")
+    prs.save(out_pptx)
+    print(f"File PowerPoint 13 slide đã được tạo thành công tại: {out_pptx}")
 
 if __name__ == "__main__":
     main()
